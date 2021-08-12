@@ -15,10 +15,10 @@ export class Dog {
     }
 
     assignPartner() {
-        this.getHasPartner() = true;
+        this.getHasPartner = true;
     }
     removePartner() {
-        this.__hasPartner() = false;
+        this.__hasPartner = false;
     }
 }
 

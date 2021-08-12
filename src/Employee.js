@@ -22,11 +22,7 @@ export class Employee {
         return Promise.resolve(dog);
     }
     removeDogByName(dogName) {
-        const dog = this.getDogByName(dogName);
-        const index = this.__dogs.indexOf(dog);
-        if (index !== -1) {
-            allDogs.splice(index, 1);
-        }
+        this.__dogs = this.__dogs.filter(dog => dog.name !== dogName);
     }
     getCategory() {
         return this.__category;

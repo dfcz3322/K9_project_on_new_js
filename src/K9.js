@@ -1,6 +1,5 @@
 import { Dog } from "./Dog.js";
 import { Employee } from "./Employee.js";
-import { remove } from "./utils.js";
 
 export class K9 {
     constructor() {
@@ -14,7 +13,7 @@ export class K9 {
 
     addEmployee(employee) {
         if (employee instanceof Employee) {
-            this.getEmployees().push(employee);
+            this.__employees.push(employee);
         } else {
             console.error("Not an employee");
         }
@@ -27,7 +26,7 @@ export class K9 {
 
     addDog(dog) {
         if (dog instanceof Dog) {
-            this.getDogs().push(dog);
+            this.__dogs.push(dog);
         } else {
             console.error("Not a dog");
         }
@@ -40,12 +39,12 @@ export class K9 {
     }
 
     removeDogAndEmployee(employeeName, dogName) {
-        remove(this.getEmployees(), employeeName);
-        remove(this.getDogs(), dogName);
+        this.__employees = this.__employees.filter(employee => employee.name !== employeeName);
+        this.__dogs = this.__dogs.filter(dog => dog.name !== dogName);
     }
 
     findEmployeeByDog(dogName) {
-        const employee = this.getEmployees().find((employee) => {
+        const employee = this.__employees.find((employee) => {
             return employee.getDogs().find((dog) => dog.getName() === dogName);
         });
 
